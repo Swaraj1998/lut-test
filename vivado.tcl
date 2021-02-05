@@ -12,7 +12,6 @@ set ODIR .
 
 read_vhdl -vhdl2008 ../top.vhd
 read_vhdl -vhdl2008 ../ps7_stub.vhd
-read_vhdl -vhdl2008 ../lut.vhd
 
 read_vhdl -vhdl2008 ../vivado_pkg.vhd
 
@@ -56,7 +55,7 @@ report_timing -no_header -path_type summary -max_paths 1000 -slack_lesser_than 0
 
 set_property BITSTREAM.GENERAL.COMPRESS False [current_design]
 set_property BITSTREAM.CONFIG.USERID "DEADC0DE" [current_design]
-set_property BITSTREAM.CONFIG.USR_ACCESS TIMESTAMP [current_design]
+#set_property BITSTREAM.CONFIG.USR_ACCESS TIMESTAMP [current_design]
 set_property BITSTREAM.READBACK.ACTIVERECONFIG Yes [current_design]
 
 write_bitstream -force $ODIR/lut_test.bit
