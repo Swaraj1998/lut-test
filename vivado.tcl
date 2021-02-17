@@ -5,6 +5,7 @@
 # Copyright (C) 2013 H.Poetzl
 
 set ODIR .
+set OBITNAME lut_test
 
 # set_param project.enableVHDL2008 1
 
@@ -58,9 +59,11 @@ set_property BITSTREAM.CONFIG.USERID "DEADC0DE" [current_design]
 #set_property BITSTREAM.CONFIG.USR_ACCESS TIMESTAMP [current_design]
 set_property BITSTREAM.READBACK.ACTIVERECONFIG Yes [current_design]
 
-write_bitstream -force $ODIR/lut_test.bit
+set_property BITSTREAM.GENERAL.PERFRAMECRC Yes [current_design]
+
+write_bitstream -force $ODIR/$OBITNAME.bit
 write_cfgmem -force -format bin -interface SMAPx32 \
-    -disablebitswap -loadbit "up 0x0 lut_test.bit" -file lut_test.bin
+    -disablebitswap -loadbit "up 0x0 $OBITNAME.bit" -file $OBITNAME.bin
 
 # STEP#6: generate reports
 
